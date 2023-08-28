@@ -1,0 +1,79 @@
+import React, { } from "react";
+import { TouchableOpacity, View, StyleSheet, } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { RFPercentage } from "react-native-responsive-fontsize";
+import { Hideo } from 'react-native-textinput-effects';
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import { COLORS, FONTS, SIZES } from "../constants";
+
+
+
+
+
+const Input = (props) => {
+    return (
+        <View style={styles.inputContainer}>
+
+            <Hideo
+                value={props.value}
+                onChangeText={props.onChangeText}
+                iconClass={MaterialIcons}
+                iconName={props.Icon_name}
+                iconSize={RFPercentage(3)}
+                iconColor={'white'}
+                secureTextEntry={props.secureTextEntry}
+                iconBackgroundColor={COLORS.Green}
+                placeholder={props.placeholder}
+                inputStyle={[{ color: COLORS.black, backgroundColor: COLORS.smooth_color, },FONTS.Reg_Text]}
+                style={[{ height: RFPercentage(6.6), }, props.style]}
+                placeholderTextColor={props.placeholderTextColor}
+                autoCapitalize={props.autoCapitalize}
+                keyboardType={props.keyboardType}
+                returnKeyType={props.returnKeyType}
+                onSubmitEditing={props.onSubmitEditing}
+                underlineColorAndroid={props.underlineColorAndroid}
+                blurOnSubmit={props.blurOnSubmit}
+                onFocus={props.onFocus}
+            />
+            <MaterialIcons onPress={props.Secure_Icon_Fun} name={props.Secure_Icon} color={COLORS.white} size={28} style={{ marginHorizontal: 5, alignSelf: 'center' }} />
+        </View>
+
+
+    );
+};
+
+const IconButton = (props) => {
+    return (
+        <>
+            <TouchableOpacity
+                style={{ height: RFPercentage(6.5), width: RFPercentage(6.5), backgroundColor: '#f2a59d', borderRadius: RFPercentage(2), alignItems: 'center', justifyContent: 'center' }}
+                activeOpacity={0.5}
+                disabled={props.disabled}
+                onPress={props.IconButtonOnPress}
+            >
+                <FontAwesome name={props.IconButtonName} size={30} color='#fff' />
+            </TouchableOpacity>
+        </>
+    )
+}
+
+const styles = StyleSheet.create({
+    inputContainer: {
+        width: SIZES.width*.95,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignSelf: 'center',
+        backgroundColor: '#f7f7f7a6',
+        marginBottom:RFPercentage(4.5),
+        marginTop:RFPercentage(2)
+    },
+
+    input: {
+        fontSize: RFPercentage(1.8),
+        color: '#000',
+
+    }
+
+});
+
+export { Input ,IconButton}
